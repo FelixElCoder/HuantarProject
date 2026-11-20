@@ -169,3 +169,10 @@ Packages/packages-lock.json linguist-generated
 
 # Exceptions for .asset files such as lightning pre-baking
 LightingData.asset     binary
+
+# Herramientas del proyecto (Krita, GIMP, Audacity, LMMS)
+*.kra                   lfs
+*.xcf                   lfs
+*.flac                  lfs
+*.aup3                  lfs
+*.mmpz                  lfs
