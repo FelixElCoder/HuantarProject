@@ -44,18 +44,22 @@ namespace Huantar.Player{
         bool exhausted;
         float currentEyeHeight;
         Vector2 input;
+        LanternController lantern;
 
         public bool IsRunning { get; private set; }
         public bool IsCrouching { get; private set; }
         public bool IsExhausted => exhausted;
+        public bool IsHidden => IsCrouching && HideSpot.PlayerInside && (lantern == null || !lantern.IsOn);
         public float Stamina01 => stamina / maxStamina;
         public float NoiseLevel { get; private set; }
+        public bool InputEnabled { get; set; } = true;
 
         void Awake()
         {
             controller = GetComponent<CharacterController>();
             stamina = maxStamina;
             currentEyeHeight = standEyeHeight;
+            lantern = GetComponent<LanternController>();
         }
 
         void Start()
@@ -67,6 +71,7 @@ namespace Huantar.Player{
         // Update is called once per frame
         void Update()
         {
+            if (!InputEnabled) return;
             var kb = Keyboard.current;
             if (kb == null) return;
 
@@ -172,7 +177,31 @@ namespace Huantar.Player{
             controller.Move(velocity * Time.deltaTime);
         }
 
-        
+        public void Teleport(Vector3 position, Quaternion rotation)
+        {
+            controller.enabled = false;
+            transform.SetPositionAndRotation(position, rotation);
+            controller.enabled = true;
+
+            pitch = 0f;
+            cameraPivot.localRotation = Quaternion.identity;
+            verticalVelocity = 0f;
+            stamina = maxStamina;
+            exhausted = false;
+        }
+
+        public void FaceTowards(Vector3 worldPoint)
+        {
+            Vector3 flat = worldPoint - transform.position;
+            flat.y = 0f;
+            if (flat.sqrMagnitude > 0.01f)
+                transform.rotation = Quaternion.LookRotation(flat);
+
+            Vector3 toTarget = worldPoint - cameraPivot.position;
+            float vertical = Mathf.Atan2(toTarget.y, new Vector2(toTarget.x, toTarget.z).magnitude) * Mathf.Rad2Deg;
+            pitch = Mathf.Clamp(-vertical, -maxPitch, maxPitch);
+            cameraPivot.localRotation = Quaternion.Euler(pitch, 0f, 0f);
+        }
     }
 }
 

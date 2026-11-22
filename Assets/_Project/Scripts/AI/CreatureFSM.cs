@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.AI;
+using Huantar.Core;
 
 namespace Huantar.AI
 {
@@ -20,6 +21,8 @@ namespace Huantar.AI
         bool initialized;
 
         protected abstract CreatureState InitialState { get; }
+        protected virtual void OnEnable() => ThreatRegistry.Register(transform);
+        protected virtual void OnDisable() => ThreatRegistry.Unregister(transform);
 
         protected virtual void Awake()
         {

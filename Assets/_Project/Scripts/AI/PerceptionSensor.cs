@@ -30,7 +30,7 @@ namespace Huantar.AI
         public float Detection01 { get; private set; }
         public Vector3 LastKnownPlayerPosition { get; private set; }
         public Vector3 LastHeardPosition { get; private set; }
-        public bool LanternOn { get; set; }
+        LanternController playerLantern;
         public Transform Player => player;
 
         float CurrentVisionRange => visionRange * (LanternOn ? lanternRangeMultiplier : 1f);
@@ -41,6 +41,12 @@ namespace Huantar.AI
         float tickTimer;
         bool inSight;
         float lastDistance = float.MaxValue;
+        bool playerWasHidden;
+        bool hidingCompromised;
+
+        public bool LanternOn => playerLantern != null && playerLantern.IsOn;
+
+        public bool PlayerHidden { get; private set; }
 
         void Start()
         {
@@ -49,6 +55,7 @@ namespace Huantar.AI
             player = p.transform;
             playerController = p.GetComponent<CharacterController>();
             playerFPC = p.GetComponent<FirstPersonController>();
+            playerLantern = p.GetComponent<LanternController>();
         }
 
         void Update()
@@ -59,6 +66,7 @@ namespace Huantar.AI
             if (tickTimer <= 0f)
             {
                 tickTimer = tickInterval;
+                UpdateHiding();
                 inSight = CheckVision(out lastDistance);
                 HeardPlayer = CheckHearing();
             }
@@ -79,6 +87,8 @@ namespace Huantar.AI
             Vector3 eye = EyePosition;
             Vector3 target = PlayerTargetPoint();
             distance = Vector3.Distance(eye, target);
+
+            if (PlayerHidden) return false;
 
             if (distance <= proximityRadius) return true;
             if (distance > CurrentVisionRange) return false;
@@ -107,6 +117,20 @@ namespace Huantar.AI
             return true;
         }
 
+        void UpdateHiding()
+        {
+            bool hidden = playerFPC != null && playerFPC.IsHidden;
+
+            if (hidden && !playerWasHidden)
+                hidingCompromised = CanSeePlayer;
+
+            if (!hidden)
+                hidingCompromised = false;
+
+            playerWasHidden = hidden;
+            PlayerHidden = hidden && !hidingCompromised;
+        }
+
         void UpdateDetection(float dt)
         {
             if (inSight)
@@ -129,6 +153,15 @@ namespace Huantar.AI
 
             CanSeePlayer = inSight && Detection01 >= 1f;
             if (CanSeePlayer) LastKnownPlayerPosition = player.position;
+        }
+
+        public void ResetPerception()
+        {
+            Detection01 = 0f;
+            CanSeePlayer = false;
+            HeardPlayer = false;
+            inSight = false;
+            hidingCompromised = false;
         }
 
         void OnDrawGizmos()
