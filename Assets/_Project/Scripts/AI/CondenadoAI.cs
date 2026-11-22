@@ -2,6 +2,7 @@ using UnityEngine;
 
 namespace Huantar.AI
 {
+    [RequireComponent(typeof(PerceptionSensor))]
     public class CondenadoAI : CreatureFSM
     {
         [Header("Deambular")]
@@ -9,6 +10,17 @@ namespace Huantar.AI
         [SerializeField] float wanderSpeed = 1.2f;
         [SerializeField] Vector2 waitAtPoint = new Vector2(1.5f, 4f);
         [SerializeField] bool randomOrder = true;
+
+        [Header("Sospecha")]
+        [SerializeField] float turnSpeed = 90f;
+
+        PerceptionSensor perception;
+
+        protected override void Awake()
+        {
+            base.Awake();
+            perception = GetComponent<PerceptionSensor>();
+        }
 
         int patrolIndex = -1;
         float waitTime;
@@ -40,6 +52,13 @@ namespace Huantar.AI
 
         void UpdateDeambular()
         {
+            if (perception.Detection01 > 0.01f && perception.Player != null)
+            {
+                agent.isStopped = true;
+                FaceTowards(perception.Player.position);
+                return;
+            }
+            agent.isStopped = false;
             if (waiting)
             {
                 waitTime -= Time.deltaTime;
@@ -56,6 +75,15 @@ namespace Huantar.AI
                 waiting = true;
                 waitTime = Random.Range(waitAtPoint.x, waitAtPoint.y);
             }
+        }
+
+        void FaceTowards(Vector3 target)
+        {
+            Vector3 dir = target - transform.position;
+            dir.y = 0f;
+            if (dir.sqrMagnitude < 0.01f) return;
+            Quaternion look = Quaternion.LookRotation(dir);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, look, turnSpeed * Time.deltaTime);
         }
 
         void GoToNextPatrolPoint()
