@@ -16,6 +16,9 @@ namespace Huantar.Narrative
 
         readonly List<NotebookEntryData> discovered = new();
 
+        public int CountDiscoveredAll => discovered.Count;
+        public int CountTotalAll => catalog == null ? 0 : catalog.Count(e => e != null);
+
         void Awake()
         {
             if (Instance != null && Instance != this) { Destroy(gameObject); return; }

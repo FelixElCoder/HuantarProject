@@ -11,11 +11,15 @@ namespace Huantar.Core
         public static void RaisePlayerCaught(Transform byWhom) => PlayerCaught?.Invoke(byWhom);
         public static void RaisePlayerRespawned() => PlayerRespawned?.Invoke();
 
+        public static event Action BetaFinished;
+        public static void RaiseBetaFinished() => BetaFinished?.Invoke();
+
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
         static void ResetStatics()
         {
             PlayerCaught = null;
             PlayerRespawned = null;
+            BetaFinished = null;
         }
     }
 }

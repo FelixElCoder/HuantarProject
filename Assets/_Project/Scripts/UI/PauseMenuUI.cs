@@ -56,6 +56,8 @@ namespace Huantar.UI
             var kb = Keyboard.current;
             if (kb == null || !kb.escapeKey.wasPressedThisFrame) return;
 
+            if (BetaEndScreenUI.IsShowing) return;
+
             if (notebook != null && notebook.IsOpen) { notebook.Close(); return; }
 
             if (IsOpen) Close();
