@@ -52881,6 +52881,7 @@ GameObject:
   - component: {fileID: 401082631}
   - component: {fileID: 401082630}
   - component: {fileID: 401082632}
+  - component: {fileID: 401082633}
   m_Layer: 0
   m_Name: Agua
   m_TagString: Untagged
@@ -52980,6 +52981,19 @@ MonoBehaviour:
   m_IgnoreFromBuild: 1
   m_ApplyToChildren: 1
   m_AffectedAgents: ffffffffi
+--- !u!114 &401082633
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 401082627}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58dc480f943f854468a3722b16cde879, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Huantar.Atmosphere.WaterScroll
+  speed: {x: 0.02, y: 0.05}
 --- !u!43 &403628894
 Mesh:
   m_ObjectHideFlags: 0
