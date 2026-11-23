@@ -32,7 +32,7 @@ namespace Huantar.UI
         IEnumerator Sequence(Transform byWhom)
         {
             running = true;
-            player.InputEnabled = false;
+            player.SetInputLock(this, true);
 
             float t = 0f;
             while (t < lookDuration)
@@ -48,7 +48,7 @@ namespace Huantar.UI
             CheckpointManager.Instance.Respawn();
 
             yield return Fade(1f, 0f);
-            player.InputEnabled = true;
+            player.SetInputLock(this, false);
             running = false;
         }
 

@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 478a0296726c7c84e9fc84449aefe005, type: 3}
+  m_Name: NB_Condenado
+  m_EditorClassIdentifier: Assembly-CSharp::Huantar.Narrative.NotebookEntryData
+  title: El alma que no descansa
+  category: 2
+  fieldNotes: "El gu\xEDa habla en voz baja de un \xABcondenado\xBB: un muerto que no hall\xF3 descanso por sus pecados y vaga por los cerros, hambriento. Dice que se le oye antes de verlo. Hace unas horas me habr\xEDa re\xEDdo."
+  hasRealFact: 1
+  realFact: "En la tradici\xF3n oral andina, el condenado es el alma de una persona que, por faltas graves cometidas en vida, no puede descansar y vaga por cerros y nevados. Es una creencia sincr\xE9tica: une la idea cristiana de la condena con concepciones andinas sobre los muertos, y sigue presente en relatos de muchas comunidades de la sierra."
+  source: ...

@@ -52,12 +52,12 @@ namespace Huantar.Narrative
             while (queue.Count > 0)
             {
                 var (data, onComplete) = queue.Dequeue();
-                if (data.blocking && player != null) player.InputEnabled = false;
+                if (data.blocking && player != null) player.SetInputLock(this, true);
 
                 foreach (DialogueLine line in data.lines)
                     yield return PlayLine(line, data.blocking);
 
-                if (data.blocking && player != null) player.InputEnabled = true;
+                if (data.blocking && player != null) player.SetInputLock(this, false);
                 onComplete?.Invoke();
             }
 

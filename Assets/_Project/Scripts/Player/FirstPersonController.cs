@@ -52,7 +52,17 @@ namespace Huantar.Player{
         public bool IsHidden => IsCrouching && HideSpot.PlayerInside && (lantern == null || !lantern.IsOn);
         public float Stamina01 => stamina / maxStamina;
         public float NoiseLevel { get; private set; }
-        public bool InputEnabled { get; set; } = true;
+        //
+        readonly System.Collections.Generic.HashSet<object> inputLocks = new();
+
+        public bool InputEnabled => inputLocks.Count == 0;
+
+        public void SetInputLock(object owner, bool locked)
+        {
+            if (locked) inputLocks.Add(owner);
+            else inputLocks.Remove(owner);
+        }
+        //
         public bool Adrenaline { get; set; }
 
         void Awake()
