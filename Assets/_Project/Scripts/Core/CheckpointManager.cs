@@ -34,6 +34,7 @@ namespace Huantar.Core
             lastPosition = position;
             lastRotation = rotation;
             Debug.Log($"[Checkpoint] Guardado: {id}");
+            GameEvents.RaiseCheckpointReached(id);
         }
 
         public void Respawn()

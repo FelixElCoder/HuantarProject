@@ -5,6 +5,7 @@ using TMPro;
 using Huantar.Core;
 using Huantar.Narrative;
 using Huantar.Player;
+using Huantar.Telemetry;
 
 namespace Huantar.UI
 {
@@ -48,9 +49,11 @@ namespace Huantar.UI
             int minutes = (int)(elapsed / 60f);
             int seconds = (int)(elapsed % 60f);
             FieldNotebook nb = FieldNotebook.Instance;
+            string code = PlaytestLogger.Instance != null ? PlaytestLogger.Instance.SessionCode : "—";
             summaryLabel.text =
                 $"Tiempo de juego: {minutes:00}:{seconds:00}\n" +
-                $"Entradas del cuaderno: {nb.CountDiscoveredAll} / {nb.CountTotalAll}";
+                $"Entradas del cuaderno: {nb.CountDiscoveredAll} / {nb.CountTotalAll}\n" +
+                $"Código de sesión: <b>{code}</b>";
 
             for (float t = 0f; t < fadeDuration; t += Time.unscaledDeltaTime)
             {
