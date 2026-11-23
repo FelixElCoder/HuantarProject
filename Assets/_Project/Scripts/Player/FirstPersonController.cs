@@ -53,6 +53,7 @@ namespace Huantar.Player{
         public float Stamina01 => stamina / maxStamina;
         public float NoiseLevel { get; private set; }
         public bool InputEnabled { get; set; } = true;
+        public bool Adrenaline { get; set; }
 
         void Awake()
         {
@@ -151,6 +152,12 @@ namespace Huantar.Player{
                 regenTimer -= Time.deltaTime;
                 if (regenTimer <= 0f)
                     stamina = Mathf.Min(maxStamina, stamina + staminaRegenRate * Time.deltaTime);
+            }
+            
+            if (Adrenaline)
+            {
+                stamina = maxStamina;
+                exhausted = false;
             }
 
             if (exhausted && stamina >= maxStamina * exhaustedThreshold)
