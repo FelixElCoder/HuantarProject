@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 478a0296726c7c84e9fc84449aefe005, type: 3}
+  m_Name: NB_Apacheta
+  m_EditorClassIdentifier: Assembly-CSharp::Huantar.Narrative.NotebookEntryData
+  title: Piedras apiladas
+  category: 2
+  fieldNotes: "En lo alto del camino hay un mont\xEDculo de piedras. El gu\xEDa, al pasar, recogi\xF3 una del suelo y la dej\xF3 encima, murmurando algo en su lengua. Le pregunt\xE9 a qui\xE9n rezaba. Se\xF1al\xF3 los cerros. Hoy, sin saber bien por qu\xE9, yo tambi\xE9n dej\xE9 una."
+  hasRealFact: 1
+  realFact: "Las apachetas son mont\xEDculos de piedras que se forman en los pasos y caminos de altura de los Andes. Los viajeros a\xF1aden una piedra al pasar, como ofrenda a los apus (esp\xEDritus de los cerros), para pedir protecci\xF3n en el viaje. Es una pr\xE1ctica prehisp\xE1nica que sigue viva en muchas rutas andinas."
+  source: ...

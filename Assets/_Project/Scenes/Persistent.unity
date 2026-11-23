@@ -25,7 +25,7 @@ RenderSettings:
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
   m_AmbientMode: 3
-  m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
+  m_SubtractiveShadowColor: {r: 0.078431375, g: 0.09411765, b: 0.12156863, a: 1}
   m_SkyboxMaterial: {fileID: 0}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
@@ -128,7 +128,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5267311}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Farol
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -777,7 +777,7 @@ GameObject:
   - component: {fileID: 426151675}
   - component: {fileID: 426151676}
   - component: {fileID: 426151677}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -817,14 +817,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 426151672}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 143.58, y: -9.79, z: 245.67}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1732033574}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!114 &426151675
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3597,7 +3597,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!64 &1005440312
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4596,7 +4596,7 @@ GameObject:
   - component: {fileID: 1321292174}
   - component: {fileID: 1321292176}
   - component: {fileID: 1321292175}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Llama
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5885,7 +5885,7 @@ GameObject:
   - component: {fileID: 1732033573}
   - component: {fileID: 1732033572}
   - component: {fileID: 1732033575}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -5910,7 +5910,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.10196079, g: 0.121568635, b: 0.15686275, a: 0}
+  m_BackGroundColor: {r: 0.078431375, g: 0.09411765, b: 0.12156863, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -6350,6 +6350,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 33238b90adde5c444a3a157c7d2c275a, type: 2}
   - {fileID: 11400000, guid: 2b5988a0edb4e41489f81a23928ed4af, type: 2}
   - {fileID: 11400000, guid: aa4708e43cd62924cb3c22551ef2caf7, type: 2}
+  - {fileID: 11400000, guid: a755eeb1d025c5644bdc197f1fa60c7f, type: 2}
+  - {fileID: 11400000, guid: 6bbb3bc48f59123449c9df718ae3dc44, type: 2}
+  - {fileID: 11400000, guid: 6c2b7284a6617a04d813d45a4d47e87c, type: 2}
 --- !u!1 &1905465460
 GameObject:
   m_ObjectHideFlags: 0
@@ -6619,7 +6622,7 @@ GameObject:
   - component: {fileID: 1914199689}
   - component: {fileID: 1914199691}
   - component: {fileID: 1914199690}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Luz_Farol
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6878,7 +6881,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Huantar.Core.GameBootstrap
   initialZones:
-  - Zone_Pueblo
+  - Zone_Quebrada
 --- !u!4 &2088400273
 Transform:
   m_ObjectHideFlags: 0
