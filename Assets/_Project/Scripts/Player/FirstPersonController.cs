@@ -65,6 +65,12 @@ namespace Huantar.Player{
         //
         public bool Adrenaline { get; set; }
 
+        public float MouseSensitivity
+        {
+            get => mouseSensitivity;
+            set => mouseSensitivity = value;
+        }
+
         void Awake()
         {
             controller = GetComponent<CharacterController>();

@@ -57,10 +57,6 @@ namespace Huantar.UI
                 if (IsOpen) Close();
                 else if (player.InputEnabled) Open();
             }
-            else if (IsOpen && kb.escapeKey.wasPressedThisFrame)
-            {
-                Close();
-            }
         }
 
         public void Open()
